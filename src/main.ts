@@ -11,6 +11,7 @@ async function bootstrap() {
   app.enableCors({
     origin: [
       'https://crisjs.vercel.app',
+      'https://criscsm.vercel.app',
       'https://criscrm.vercel.app',
       'https://criscms.vercel.app',
       'https://terrakota.vercel.app',
