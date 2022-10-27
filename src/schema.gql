@@ -1,0 +1,590 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Image {
+  uid: String
+  src: String!
+  alt: String!
+}
+
+type Seo {
+  title: String!
+  href: String!
+  description: String!
+  image: Image
+}
+
+type UpdateDate {
+  createdAt: DateTime!
+  lastUpdatedAt: DateTime
+  register: [Register!]
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Register {
+  uid: String
+  change: String
+  updatedAt: DateTime!
+}
+
+type Tags {
+  uid: String!
+  text: String!
+  href: String!
+}
+
+type PageDataDto {
+  count: Float!
+  limit: Float!
+  offset: Float!
+}
+
+type Wear {
+  _id: ID!
+  data: DataWear!
+  siteId: String!
+  parentId: String!
+}
+
+type DataWear {
+  type: String!
+  name: String!
+  slug: String!
+  mark: String!
+  inStock: Float!
+  price: Float!
+  discountPrice: Float!
+  description: String!
+  promotion: Promotion!
+  details: String
+  featured: String
+  specs: String
+  tags: [Tags!]!
+  image: [Image!]!
+  seo: Seo!
+  updateDate: UpdateDate!
+}
+
+type Promotion {
+  name: String!
+  href: String!
+}
+
+type ListWear {
+  page: WearConnection!
+  pageData: PageDataDto
+}
+
+type WearConnection {
+  edges: [WearEdge!]
+  pageInfo: WearPageInfo
+}
+
+type WearEdge {
+  cursor: String
+  node: Wear
+}
+
+type WearPageInfo {
+  startCursor: String
+  endCursor: String
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+}
+
+type Food {
+  _id: ID!
+  data: DataFood!
+  siteId: String!
+  parentId: String!
+}
+
+type DataFood {
+  name: String!
+  slug: String!
+  price: Float!
+  discountPrice: Float!
+  description: String!
+  preparation: String
+  prescription: String
+  promotion: Promotion!
+  details: String
+  featured: String
+  specs: String
+  tags: [Tags!]!
+  image: [Image!]!
+  seo: Seo!
+  updateDate: UpdateDate!
+  type: String!
+}
+
+type ListFood {
+  page: FoodConnection!
+  pageData: PageDataDto
+}
+
+type FoodConnection {
+  edges: [FoodEdge!]
+  pageInfo: FoodPageInfo
+}
+
+type FoodEdge {
+  cursor: String
+  node: Food
+}
+
+type FoodPageInfo {
+  startCursor: String
+  endCursor: String
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+}
+
+type Meal {
+  _id: ID!
+  data: DataFood!
+  siteId: String!
+  parentId: String!
+}
+
+type Page {
+  _id: ID!
+  data: DataPage!
+  slug: String!
+  siteId: String!
+  parentId: String!
+  page: [Page!]!
+}
+
+type DataPage {
+  type: String!
+  icon: String
+  seo: Seo!
+  section: [ComponentPage!]!
+  updateDate: UpdateDate!
+}
+
+type ComponentPage {
+  uid: String!
+  component: String!
+  html: String!
+}
+
+type Page0Wear {
+  _id: ID!
+  data: DataPage!
+  slug: String!
+  siteId: String!
+  parentId: String!
+  page: [Page1Wear]
+}
+
+type Page1Wear {
+  _id: ID!
+  data: DataPage!
+  slug: String!
+  siteId: String!
+  parentId: String!
+  page: [Page2Wear]
+  product: [Meal!]!
+}
+
+type Page2Wear {
+  _id: ID!
+  data: DataPage!
+  slug: String!
+  siteId: String!
+  parentId: String!
+  page: [Page3Wear]
+}
+
+type Page3Wear {
+  _id: ID!
+  data: DataPage!
+  slug: String!
+  siteId: String!
+  parentId: String!
+  page: [Page!]!
+}
+
+type Page0Food {
+  _id: ID!
+  data: DataPage!
+  slug: String!
+  siteId: String!
+  parentId: String!
+  page: [Page1Food]
+}
+
+type Page1Food {
+  _id: ID!
+  data: DataPage!
+  slug: String!
+  siteId: String!
+  parentId: String!
+  page: [Page2Food]
+  product: [Meal]
+}
+
+type Page2Food {
+  _id: ID!
+  data: DataPage!
+  slug: String!
+  siteId: String!
+  parentId: String!
+  page: [Page3Food]
+}
+
+type Page3Food {
+  _id: ID!
+  data: DataPage!
+  slug: String!
+  siteId: String!
+  parentId: String!
+  page: [Page!]!
+}
+
+type ListPage {
+  page: PageConnection!
+  pageData: PageDataDto
+}
+
+type PageConnection {
+  edges: [PageEdge!]
+  pageInfo: PagePageInfo
+}
+
+type PageEdge {
+  cursor: String
+  node: Page
+}
+
+type PagePageInfo {
+  startCursor: String
+  endCursor: String
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+}
+
+type Site {
+  _id: ID!
+  data: Data!
+  url: String!
+  page: [Page!]
+}
+
+type SiteFood {
+  _id: ID!
+  data: Data!
+  url: String!
+  page: [Page0Food]
+}
+
+type SiteWear {
+  _id: ID!
+  data: Data!
+  url: String!
+  page: [Page0Wear]
+}
+
+type Data {
+  name: String!
+  description: String!
+  siteData: SiteData!
+  siteImages: SiteImages
+  type: String!
+  dataBase: [DataBase!]!
+  seo: Seo!
+  updateDate: UpdateDate!
+}
+
+type SiteImages {
+  banner: Image
+  logo: Image
+  icon: Image
+}
+
+type SiteData {
+  numberPhone: Float
+  address: String
+  domain: Domain!
+  client: String!
+}
+
+type DataBase {
+  uid: String!
+  label: String!
+  value: String!
+}
+
+type Domain {
+  name: String!
+  dlt: String!
+}
+
+type ListSiteResponse {
+  page: SiteConnection!
+  pageData: PageDataDto
+}
+
+type SiteConnection {
+  edges: [SiteEdge!]
+  pageInfo: SitePageInfo
+}
+
+type SiteEdge {
+  cursor: String
+  node: Site
+}
+
+type SitePageInfo {
+  startCursor: String
+  endCursor: String
+  hasPreviousPage: Boolean!
+  hasNextPage: Boolean!
+}
+
+type HardwarePage {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Query {
+  findSiteFood(id: String!): SiteFood!
+  findSitesFood: [SiteFood!]!
+  sitesByPagination(input: ListInput!): [SiteWear!]!
+  listSitesFoodWithCursor(args: ConnectionArgs!): ListSiteResponse!
+  findPage0Food(id: String!): Page0Food!
+  findPages0Food: [Page0Food!]!
+  findPages0FoodByParentId(parentId: String!): [Page0Food!]!
+  listPages0FoodWithCursor(args: ConnectionArgs!, parentId: String!): ListPage!
+  findPage1Food(id: String!): Page1Food!
+  findPages1Food: [Page1Food!]!
+  findPages1FoodByParentId(parentId: String!): [Page1Food!]!
+  listPages1FoodWithCursor(args: ConnectionArgs!, parentId: String!): ListPage!
+  findPage2Food(id: String!): Page2Food!
+  findPages2Food: [Page2Food!]!
+  findPages2FoodByParentId(parentId: String!): [Page2Food!]!
+  listPages2FoodWithCursor(args: ConnectionArgs!, parentId: String!): ListPage!
+  findProductFood(id: String!, type: String!): Food!
+  findProductsFood(type: String!): [Food!]!
+  findAllProductsFood: [Food!]!
+  findProductsFoodByParent(parentId: String!, type: String!): [Food!]!
+  findAllProductsFoodByParent(parentId: String!): [Food!]!
+  listProductFoodWithCursor(args: ConnectionArgs!, type: String!, siteId: String!): ListFood!
+  findSiteWear(id: String!): SiteWear!
+  findSitesWear: [SiteWear!]!
+  listSitesWearWithCursor(args: ConnectionArgs!): ListSiteResponse!
+  findPage0Wear(id: String!): Page0Wear!
+  findPages0Wear: [Page0Wear!]!
+  findPages0WearByParentId(parentId: String!): [Page0Wear!]!
+  listPages0WearWithCursor(args: ConnectionArgs!, parentId: String!): ListPage!
+  findPage1Wear(id: String!): Page1Wear!
+  findPages1Wear: [Page1Wear!]!
+  findPages1WearByParentId(parentId: String!): [Page1Wear!]!
+  listPages1WearWithCursor(args: ConnectionArgs!, parentId: String!): ListPage!
+  findPage2Wear(id: String!): Page2Wear!
+  findPages2Wear: [Page2Wear!]!
+  findPages2WearByParentId(parentId: String!): [Page2Wear!]!
+  listPages2WearWithCursor(args: ConnectionArgs!, parentId: String!): ListPage!
+  hardwarePages: [HardwarePage!]!
+  hardwarePage(id: Int!): HardwarePage!
+  findProductWear(id: String!, type: String!): Wear!
+  findProductsWear(type: String!): [Wear!]!
+  findAllProductsWear: [Wear!]!
+  findProductsWearByParent(parentId: String!, type: String!): [Wear!]!
+  findAllProductsWearByParent(parentId: String!): [Wear!]!
+  listProductWearWithCursor(args: ConnectionArgs!, type: String!, siteId: String!): ListWear!
+}
+
+input ListInput {
+  """classical limit"""
+  limit: Float!
+
+  """classical offset"""
+  offset: Float!
+}
+
+input ConnectionArgs {
+  """Paginate before opaque cursor"""
+  before: String
+
+  """Paginate after opaque cursor"""
+  after: String
+
+  """Paginate first"""
+  first: Float
+
+  """Paginate last"""
+  last: Float
+}
+
+type Mutation {
+  createSiteFood(input: CreateSite!): SiteFood!
+  updateSiteFood(id: String!, input: UpdateSite!): SiteFood!
+  updateSiteImageFood(id: String!, inputImage: UpdateImage!, type: String!, uid: String!): SiteFood!
+  updateDataBaseFood(id: String!, inputDB: [UpdateDataBase!]!): SiteFood!
+  deleteSiteFood(id: String!): String!
+  deleteSitesFood(ids: [String!]!): [String!]!
+  createPage0Food(input: CreatePage!): Page0Food!
+  updatePage0Food(id: String!, input: UpdatePage!): Page0Food!
+  updateImagePage0Food(id: String!, inputImage: UpdateImage!, uid: String!): Page0Food!
+  deletePage0Food(id: String!): String!
+  deletePages0Food(ids: [String!]!): [String!]!
+  createPage1Food(input: CreatePage!): Page1Food!
+  updatePage1Food(id: String!, input: UpdatePage!): Page1Food!
+  updateImagePage1Food(id: String!, inputImage: UpdateImage!, uid: String!): Page1Food!
+  deletePage1Food(id: String!): String!
+  deletePages1Food(ids: [String!]!): [String!]!
+  createPage2Food(input: CreatePage!): Page2Food!
+  updatePage2Food(id: String!, input: UpdatePage!): Page2Food!
+  updateImagePage2Food(id: String!, inputImage: UpdateImage!, uid: String!): Page2Food!
+  deletePage2Food(id: String!): String!
+  deletePages2Food(ids: [String!]!): [String!]!
+  createProductFood(input: CreateFood!, type: String!): Food!
+  updateProductFood(id: String!, input: UpdateFood!, type: String!): Food!
+  updateProductFoodImage(id: String!, inputImage: [UpdateImage!]!, type: String!, uid: String!): Food!
+  deleteProductFood(id: String!, type: String!): String!
+  deleteProductsFoodBySite(siteId: String!, type: String!): String!
+  deleteProductsFood(ids: [String!]!, type: String!): [String!]!
+  createSiteWear(input: CreateSite!): SiteWear!
+  updateSiteWear(id: String!, input: UpdateSite!): SiteWear!
+  updateSiteImageWear(id: String!, inputImage: UpdateImage!, type: String!, uid: String!): SiteWear!
+  updateDataBaseWear(id: String!, inputDB: [UpdateDataBase!]!): SiteWear!
+  deleteSiteWear(id: String!): String!
+  deleteSitesWear(ids: [String!]!): [String!]!
+  createPage0Wear(input: CreatePage!): Page0Wear!
+  updatePage0Wear(id: String!, input: UpdatePage!): Page0Wear!
+  updateImagePage0Wear(id: String!, inputImage: UpdateImage!, uid: String!): Page0Wear!
+  deletePage0Wear(id: String!): String!
+  deletePages0Wear(ids: [String!]!): [String!]!
+  createPage1Wear(input: CreatePage!): Page1Wear!
+  updatePage1Wear(id: String!, input: UpdatePage!): Page1Wear!
+  updateImagePage1Wear(id: String!, inputImage: UpdateImage!, uid: String!): Page1Wear!
+  deletePage1Wear(id: String!): String!
+  deletePages1Wear(ids: [String!]!): [String!]!
+  createPage2Wear(input: CreatePage!): Page2Wear!
+  updatePage2Wear(id: String!, input: UpdatePage!): Page2Wear!
+  updateImagePage2Wear(id: String!, inputImage: UpdateImage!, uid: String!): Page2Wear!
+  deletePage2Wear(id: String!): String!
+  deletePages2Wear(ids: [String!]!): [String!]!
+  createHardwarePage(createHardwarePageInput: CreateHardwarePageInput!): HardwarePage!
+  updateHardwarePage(updateHardwarePageInput: UpdateHardwarePageInput!): HardwarePage!
+  removeHardwarePage(id: Int!): HardwarePage!
+  createProductWear(input: CreateWear!, type: String!): Wear!
+  updateProductWear(id: String!, input: UpdateWear!, type: String!): Wear!
+  updateProductWearImage(id: String!, inputImage: [UpdateImage!]!, type: String!, uid: String!): Wear!
+  deleteProductWear(id: String!, type: String!): String!
+  deleteProductsWearBySite(siteId: String!, type: String!): String!
+  deleteProductsWear(ids: [String!]!, type: String!): [String!]!
+}
+
+input CreateSite {
+  name: String!
+  domain: String!
+  description: String!
+  type: String!
+  client: String
+  uid: String!
+}
+
+input UpdateSite {
+  name: String!
+  domain: String!
+  description: String!
+  type: String!
+  client: String
+  uid: String!
+}
+
+input UpdateImage {
+  uid: String
+  src: String!
+  alt: String!
+}
+
+input UpdateDataBase {
+  type: String!
+}
+
+input CreatePage {
+  title: String!
+  description: String!
+  type: String!
+  parentId: String!
+  siteId: String!
+}
+
+input UpdatePage {
+  title: String!
+  description: String!
+  type: String!
+  parentId: String!
+  siteId: String!
+}
+
+input CreateFood {
+  name: String!
+  description: String!
+  promotion: String!
+  price: Float!
+  discountPrice: Float!
+  siteId: String!
+  parentId: String!
+  uid: String!
+}
+
+input UpdateFood {
+  name: String
+  description: String
+  promotion: String
+  price: Float
+  discountPrice: Float
+  siteId: String
+  parentId: String
+  uid: String
+  prescription: String
+  preparation: String
+}
+
+input CreateHardwarePageInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateHardwarePageInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
+
+input CreateWear {
+  name: String!
+  mark: String!
+  description: String!
+  promotion: String!
+  inStock: Float!
+  price: Float!
+  discountPrice: Float!
+  siteId: String!
+  parentId: String!
+  uid: String!
+}
+
+input UpdateWear {
+  name: String
+  mark: String
+  description: String
+  promotion: String
+  inStock: Float
+  price: Float
+  discountPrice: Float
+  siteId: String
+  parentId: String
+  uid: String
+}
