@@ -1,6 +1,4 @@
 import { Module, ValidationPipe } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { FoodSitesModule } from './sites/food-sites/food-sites.module';
 import { WearSitesModule } from './sites/wear-sites/wear-sites.module';
 import { FoodPagesModule } from './pages/food-pages/food-pages.module';
@@ -24,9 +22,8 @@ import { UploadsModule } from './uploads/uploads.module';
     WearProductsModule,
     UploadsModule,
   ],
-  controllers: [AppController],
+  controllers: [],
   providers: [
-    AppService,
     {
       provide: APP_PIPE,
       useClass: ValidationPipe,
