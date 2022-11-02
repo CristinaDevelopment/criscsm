@@ -94,4 +94,27 @@ export class Page9Food extends Page {}
 export class Page10Food extends Page {}
 
 @ObjectType()
+export class Page0Marketing extends Page {}
+@ObjectType()
+export class Page1Marketing extends Page {}
+@ObjectType()
+export class Page2Marketing extends Page {}
+@ObjectType()
+export class Page3Marketing extends Page {}
+@ObjectType()
+export class Page4Marketing extends Page {}
+@ObjectType()
+export class Page5Marketing extends Page {}
+@ObjectType()
+export class Page6Marketing extends Page {}
+@ObjectType()
+export class Page7Marketing extends Page {}
+@ObjectType()
+export class Page8Marketing extends Page {}
+@ObjectType()
+export class Page9Marketing extends Page {}
+@ObjectType()
+export class Page10Marketing extends Page {}
+
+@ObjectType()
 export class ListPage extends RelayTypes<Page>(Page) {}

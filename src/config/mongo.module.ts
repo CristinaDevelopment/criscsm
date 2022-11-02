@@ -4,16 +4,16 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 @Module({
   imports: [
-    // MongooseModule.forRootAsync({
-    //   imports: [ConfigModule],
-    //   connectionName: 'sitesEcommerceDB',
-    //   useFactory: async (configService: ConfigService) => ({
-    //     uri: configService.get<string>('MONGODB_URL_SITE_ECOMMERCE'),
-    //     useNewUrlParser: true,
-    //     useUnifiedTopology: true,
-    //   }),
-    //   inject: [ConfigService],
-    // }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      connectionName: 'sitesMarketingDB',
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('MONGODB_URL_SITE_MARKETING'),
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }),
+      inject: [ConfigService],
+    }),
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       connectionName: 'sitesWearDB',
@@ -34,36 +34,7 @@ import { MongooseModule } from '@nestjs/mongoose';
       }),
       inject: [ConfigService],
     }),
-    // MongooseModule.forRootAsync({
-    //   imports: [ConfigModule],
-    //   connectionName: 'sitesEducationDB',
-    //   useFactory: async (configService: ConfigService) => ({
-    //     uri: configService.get<string>('MONGODB_URL_SITE_EDUCATION'),
-    //     useNewUrlParser: true,
-    //     useUnifiedTopology: true,
-    //   }),
-    //   inject: [ConfigService],
-    // }),
-    // MongooseModule.forRootAsync({
-    //   imports: [ConfigModule],
-    //   connectionName: 'sitesMarketingDB',
-    //   useFactory: async (configService: ConfigService) => ({
-    //     uri: configService.get<string>('MONGODB_URL_SITE_MARKETING'),
-    //     useNewUrlParser: true,
-    //     useUnifiedTopology: true,
-    //   }),
-    //   inject: [ConfigService],
-    // }),
-    // MongooseModule.forRootAsync({
-    //   imports: [ConfigModule],
-    //   connectionName: 'pagesEcommerceDB',
-    //   useFactory: async (configService: ConfigService) => ({
-    //     uri: configService.get<string>('MONGODB_URL_PAGE_ECOMMERCE'),
-    //     useNewUrlParser: true,
-    //     useUnifiedTopology: true,
-    //   }),
-    //   inject: [ConfigService],
-    // }),
+   
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       connectionName: 'pagesWearDB',
@@ -79,6 +50,26 @@ import { MongooseModule } from '@nestjs/mongoose';
       connectionName: 'pagesFoodDB',
       useFactory: async (configService: ConfigService) => ({
         uri: configService.get<string>('MONGODB_URL_PAGE_FOOD'),
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }),
+      inject: [ConfigService],
+    }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      connectionName: 'pagesMarketingDB',
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('MONGODB_URL_PAGE_MARKETING'),
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      }),
+      inject: [ConfigService],
+    }),
+    MongooseModule.forRootAsync({
+      imports: [ConfigModule],
+      connectionName: 'usersMarketingDB',
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('MONGODB_URL_USER_MARKETING'),
         useNewUrlParser: true,
         useUnifiedTopology: true,
       }),

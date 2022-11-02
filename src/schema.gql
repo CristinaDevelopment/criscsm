@@ -249,6 +249,42 @@ type Page3Food {
   page: [Page!]!
 }
 
+type Page0Marketing {
+  _id: ID!
+  data: DataPage!
+  slug: String!
+  siteId: String!
+  parentId: String!
+  page: [Page1Marketing]
+}
+
+type Page1Marketing {
+  _id: ID!
+  data: DataPage!
+  slug: String!
+  siteId: String!
+  parentId: String!
+  page: [Page2Marketing]
+}
+
+type Page2Marketing {
+  _id: ID!
+  data: DataPage!
+  slug: String!
+  siteId: String!
+  parentId: String!
+  page: [Page3Marketing]
+}
+
+type Page3Marketing {
+  _id: ID!
+  data: DataPage!
+  slug: String!
+  siteId: String!
+  parentId: String!
+  page: [Page!]!
+}
+
 type ListPage {
   page: PageConnection!
   pageData: PageDataDto
@@ -290,6 +326,13 @@ type SiteWear {
   data: Data!
   url: String!
   page: [Page0Wear]
+}
+
+type SiteMarketing {
+  _id: ID!
+  data: Data!
+  url: String!
+  page: [Page0Marketing]
 }
 
 type Data {
@@ -354,10 +397,31 @@ type HardwarePage {
   exampleField: Int!
 }
 
+type UserMarketing {
+  _id: ID!
+  data: DataUser!
+  email: String!
+  password: String!
+  siteId: String!
+}
+
+type DataUser {
+  updateDate: UpdateDate!
+  username: String!
+  role: String!
+  image: Image!
+  status: Boolean!
+  oAuth: OAuth!
+}
+
+type OAuth {
+  provider: String!
+}
+
 type Query {
   findSiteFood(id: String!): SiteFood!
   findSitesFood: [SiteFood!]!
-  sitesByPagination(input: ListInput!): [SiteWear!]!
+  sitesByPagination(input: ListInput!): [SiteMarketing!]!
   listSitesFoodWithCursor(args: ConnectionArgs!): ListSiteResponse!
   findPage0Food(id: String!): Page0Food!
   findPages0Food: [Page0Food!]!
@@ -392,6 +456,21 @@ type Query {
   findPages2Wear: [Page2Wear!]!
   findPages2WearByParentId(parentId: String!): [Page2Wear!]!
   listPages2WearWithCursor(args: ConnectionArgs!, parentId: String!): ListPage!
+  findSiteMarketing(id: String!): SiteMarketing!
+  findSitesMarketing: [SiteMarketing!]!
+  listSitesMarketingWithCursor(args: ConnectionArgs!): ListSiteResponse!
+  findPage0Marketing(id: String!): Page0Marketing!
+  findPages0Marketing: [Page0Marketing!]!
+  findPages0MarketingByParentId(parentId: String!): [Page0Marketing!]!
+  listPages0MarketingWithCursor(args: ConnectionArgs!, parentId: String!): ListPage!
+  findPage1Marketing(id: String!): Page1Marketing!
+  findPages1Marketing: [Page1Marketing!]!
+  findPages1MarketingByParentId(parentId: String!): [Page1Marketing!]!
+  listPages1MarketingWithCursor(args: ConnectionArgs!, parentId: String!): ListPage!
+  findPage2Marketing(id: String!): Page2Marketing!
+  findPages2Marketing: [Page2Marketing!]!
+  findPages2MarketingByParentId(parentId: String!): [Page2Marketing!]!
+  listPages2MarketingWithCursor(args: ConnectionArgs!, parentId: String!): ListPage!
   hardwarePages: [HardwarePage!]!
   hardwarePage(id: Int!): HardwarePage!
   findProductWear(id: String!, type: String!): Wear!
@@ -400,6 +479,9 @@ type Query {
   findProductsWearByParent(parentId: String!, type: String!): [Wear!]!
   findAllProductsWearByParent(parentId: String!): [Wear!]!
   listProductWearWithCursor(args: ConnectionArgs!, type: String!, siteId: String!): ListWear!
+  findUserMarketing(id: String!): UserMarketing!
+  findUserByEmailMarketing(email: String!): UserMarketing!
+  findUsersMarketing: [UserMarketing!]!
 }
 
 input ListInput {
@@ -473,6 +555,27 @@ type Mutation {
   updateImagePage2Wear(id: String!, inputImage: UpdateImage!, uid: String!): Page2Wear!
   deletePage2Wear(id: String!): String!
   deletePages2Wear(ids: [String!]!): [String!]!
+  createSiteMarketing(input: CreateSite!): SiteMarketing!
+  updateSiteMarketing(id: String!, input: UpdateSite!): SiteMarketing!
+  updateSiteImageMarketing(id: String!, inputImage: UpdateImage!, type: String!, uid: String!): SiteMarketing!
+  updateDataBaseMarketing(id: String!, inputDB: [UpdateDataBase!]!): SiteMarketing!
+  deleteSiteMarketing(id: String!): String!
+  deleteSitesMarketing(ids: [String!]!): [String!]!
+  createPage0Marketing(input: CreatePage!): Page0Marketing!
+  updatePage0Marketing(id: String!, input: UpdatePage!): Page0Marketing!
+  updateImagePage0Marketing(id: String!, inputImage: UpdateImage!, uid: String!): Page0Marketing!
+  deletePage0Marketing(id: String!): String!
+  deletePages0Marketing(ids: [String!]!): [String!]!
+  createPage1Marketing(input: CreatePage!): Page1Marketing!
+  updatePage1Marketing(id: String!, input: UpdatePage!): Page1Marketing!
+  updateImagePage1Marketing(id: String!, inputImage: UpdateImage!, uid: String!): Page1Marketing!
+  deletePage1Marketing(id: String!): String!
+  deletePages1Marketing(ids: [String!]!): [String!]!
+  createPage2Marketing(input: CreatePage!): Page2Marketing!
+  updatePage2Marketing(id: String!, input: UpdatePage!): Page2Marketing!
+  updateImagePage2Marketing(id: String!, inputImage: UpdateImage!, uid: String!): Page2Marketing!
+  deletePage2Marketing(id: String!): String!
+  deletePages2Marketing(ids: [String!]!): [String!]!
   createHardwarePage(createHardwarePageInput: CreateHardwarePageInput!): HardwarePage!
   updateHardwarePage(updateHardwarePageInput: UpdateHardwarePageInput!): HardwarePage!
   removeHardwarePage(id: Int!): HardwarePage!
@@ -482,6 +585,10 @@ type Mutation {
   deleteProductWear(id: String!, type: String!): String!
   deleteProductsWearBySite(siteId: String!, type: String!): String!
   deleteProductsWear(ids: [String!]!, type: String!): [String!]!
+  createUserMarketing(input: CreateUser!): UserMarketing!
+  updateUserMarketing(id: String!, input: UpdateUser!): UserMarketing!
+  deleteUserMarketing(id: String!): String!
+  deleteUsersMarketing(ids: [String!]!): String!
 }
 
 input CreateSite {
@@ -587,4 +694,21 @@ input UpdateWear {
   siteId: String
   parentId: String
   uid: String
+}
+
+input CreateUser {
+  username: String!
+  siteId: String!
+  image: String!
+  email: String!
+  password: String!
+  role: String!
+  oAuth: String
+}
+
+input UpdateUser {
+  username: String!
+  image: String!
+  email: String!
+  oAuth: String
 }

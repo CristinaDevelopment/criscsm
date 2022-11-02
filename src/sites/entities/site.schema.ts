@@ -13,3 +13,4 @@ export class SiteDocument extends AbstractDocument {
 export const SiteSchema = SchemaFactory.createForClass(SiteDocument);
 export const SiteFoodSchema = SchemaFactory.createForClass(SiteDocument);
 export const SiteWearSchema = SchemaFactory.createForClass(SiteDocument);
+export const SiteMarketingSchema = SchemaFactory.createForClass(SiteDocument);

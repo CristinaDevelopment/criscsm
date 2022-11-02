@@ -18,6 +18,8 @@ export class Site extends AbstractModel {
 export class SiteFood extends Site {} 
 @ObjectType()
 export class SiteWear extends Site {} 
+@ObjectType()
+export class SiteMarketing extends Site {} 
 
 @ObjectType()
 export class Data {
